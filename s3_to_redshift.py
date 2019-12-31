@@ -44,7 +44,7 @@ def lambda_handler(event,context):
     print(event)
 
 
-    if event['Records'][0]['Sns']['Message']=="SUCCESSFUL":
+    if event['Records'][0]['Sns']['Message'] == "SUCCESSFUL":
 
         
         #bucket1 = event['Records'][0]['s3']['bucket']['name']
@@ -52,7 +52,7 @@ def lambda_handler(event,context):
         #key_format = key.split('.')[0]
         
  
-        conn_string = "dbname=dbname port=port user=user password=password host=host"
+        conn_string = "dbname={} port={} user={} password={} host={}".format(dbname, port, user, password, host)
         con = psycopg2.connect(conn_string)
         cur = con.cursor()
 
